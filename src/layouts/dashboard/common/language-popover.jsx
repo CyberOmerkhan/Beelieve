@@ -15,7 +15,7 @@ const LANGS = [
   },
   {
     value: 'kz',
-    label: 'Kazakh',
+    label: 'Қазақша',
     icon: '/assets/icons/kaz.svg',
   },
   {
