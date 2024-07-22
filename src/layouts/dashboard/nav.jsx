@@ -20,7 +20,7 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import Logo from '../../components/logo/log.jpg';  // Corrected path
+import Logo from '../../components/logo/icon.png';  // Corrected path
 
 
 // ----------------------------------------------------------------------
@@ -39,7 +39,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const renderLogo = (
     <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
-      <img src={Logo} alt="Logo" style={{ width: '40%', height: 'auto' }} />
+      <img src={Logo} alt="Logo" style={{ width: '30%', height: 'auto' }} />
     </Box>
   );
 

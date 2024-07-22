@@ -5,11 +5,8 @@ import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import { fShortenNumber } from 'src/utils/format-number';
 
-// ----------------------------------------------------------------------
-
-export default function AppWidgetSummary({ title, total, icon, color = 'primary', sx, ...other }) {
+export default function AppWidgetSummary({ name, title, text, icon, color = 'primary', titleColor, sx, ...other }) {
   return (
     <Card
       component={Stack}
@@ -26,9 +23,13 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
       {icon && <Box sx={{ width: 64, height: 64 }}>{icon}</Box>}
 
       <Stack spacing={0.5}>
-        <Typography variant="h4">{fShortenNumber(total)}</Typography>
-
-        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+      <Typography variant="subtitle2" sx={text.primary}>
+          {name}
+        </Typography>
+        <Typography variant="h4" sx={{ color }}>
+          {text}  {/* Display text as a string */}
+        </Typography>
+        <Typography variant="subtitle2" sx={{ color: titleColor || 'text.primary' }}>
           {title}
         </Typography>
       </Stack>
@@ -36,7 +37,29 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
   );
 }
 
+
+
+
 AppWidgetSummary.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired, 
+  icon: PropTypes.node,
+  color: PropTypes.string,
+  titleColor: PropTypes.string,
+  sx: PropTypes.object
+};
+
+// Default props for optional props
+AppWidgetSummary.defaultProps = {
+  icon: null,
+  color: 'primary',
+  sx: {}
+};
+
+
+AppWidgetSummary.propTypes = {
+  name: PropTypes.string.isRequired,
   color: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   sx: PropTypes.object,
