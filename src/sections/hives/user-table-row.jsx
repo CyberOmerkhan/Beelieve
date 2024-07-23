@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
@@ -16,10 +15,16 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
+function getColor(status) {
+  if (status === 'Отличное') return 'success';
+  if (status === 'Потенциальные риски') return 'warning';
+  if (status === 'Под угрозой') return 'error';
+  return 'default';
+}
+
 export default function UserTableRow({
   selected,
   name,
-  avatarUrl,
   company,
   role,
   isVerified,
@@ -45,7 +50,6 @@ export default function UserTableRow({
 
         <TableCell component="th" scope="row" padding="none">
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Avatar alt={name} src={avatarUrl} />
             <Typography variant="subtitle2" noWrap>
               {name}
             </Typography>
@@ -59,7 +63,7 @@ export default function UserTableRow({
         <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
 
         <TableCell>
-          <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
+          <Label color={getColor(status)}>{status}</Label>
         </TableCell>
 
         <TableCell align="right">
@@ -70,7 +74,7 @@ export default function UserTableRow({
       </TableRow>
 
       <Popover
-        open={!!open}
+        open={Boolean(open)}
         anchorEl={open}
         onClose={handleCloseMenu}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
@@ -94,12 +98,11 @@ export default function UserTableRow({
 }
 
 UserTableRow.propTypes = {
-  avatarUrl: PropTypes.any,
-  company: PropTypes.any,
+  company: PropTypes.string,
   handleClick: PropTypes.func,
-  isVerified: PropTypes.any,
-  name: PropTypes.any,
-  role: PropTypes.any,
-  selected: PropTypes.any,
+  isVerified: PropTypes.bool,
+  name: PropTypes.string,
+  role: PropTypes.string,
+  selected: PropTypes.bool,
   status: PropTypes.string,
 };

@@ -24,6 +24,67 @@ import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
 
+// Helper function to randomly assign status
+const getRandomStatus = () => {
+  const statuses = ['Отличное', 'Потенциальные риски', 'Под угрозой'];
+  return statuses[Math.floor(Math.random() * statuses.length)];
+};
+
+const getRandomDevice = () => {
+  const devices = ['Улей Beelieve', 'Хаб BeBee'];
+  return devices[Math.floor(Math.random() * devices.length)];
+};
+
+const getRandomName = () => {
+  const names = ['Улей-1', 'Улей-2', 'Улей-3', 'Улей-4', 'Улей-5', 'Улей-6', 'Улей-7', 'Улей-8', 'Улей-9', 'Улей-10', 'Улей-11', 'Улей-12', 'Улей-13', 'Улей-14', 'Улей-15', 'Улей-16', 'Улей-17', 'Улей-18', 'Улей-19', 'Улей-20', 'Улей-21', 'Улей-22', 'Улей-23', 'Улей-24', 'Улей-25', 'Улей-26', 'Улей-27', 'Улей-28', 'Улей-29', 'Улей-30',];
+  const buffer = new Uint32Array(1);
+  window.crypto.getRandomValues(buffer);
+  const randomIndex = buffer[0] % names.length;
+  return names[randomIndex];
+}
+
+const getRandomSpecies = () => {
+  const species = ["Карника",
+  "Карпатка",
+  "Кавказская",
+  "Итальянская",
+  "Бакфаст",
+  "Среднерусская",
+  "Украинская степная",
+  "Приокская",
+  "Памирская",
+  "Павловская",
+  "Лигурийская",
+  "Алтайская",
+  "Далматинская",
+  "Кубанская",
+  "Медоносная",
+  "Пчела Жигулевская",
+  "Северо-западная",
+  "Башкирская",
+  "Киргизская",
+  "Таджикская",
+  "Узбекская",
+  "Сирийская",
+  "Турецкая",
+  "Греческая",
+  "Македонская",
+  "Молдавская",
+  "Грузинская",
+  "Армянская",
+  "Азербайджанская",
+  "Туркменская"];
+  return species[Math.floor(Math.random() * species.length)];
+}
+
+const usersWithStatus = users.map(user => ({
+  ...user,
+  name: getRandomName(),
+  company: getRandomDevice(),
+  role: getRandomSpecies(),
+  status: getRandomStatus(),
+}));
+
 export default function UserPage() {
   const [page, setPage] = useState(0);
 
@@ -47,7 +108,7 @@ export default function UserPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
+      const newSelecteds = usersWithStatus.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -87,7 +148,7 @@ export default function UserPage() {
   };
 
   const dataFiltered = applyFilter({
-    inputData: users,
+    inputData: usersWithStatus,
     comparator: getComparator(order, orderBy),
     filterName,
   });
@@ -100,7 +161,7 @@ export default function UserPage() {
         <Typography variant="h4">Мои улья</Typography>
 
         <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New User
+          Добавить устройство
         </Button>
       </Stack>
 
@@ -117,16 +178,16 @@ export default function UserPage() {
               <UserTableHead
                 order={order}
                 orderBy={orderBy}
-                rowCount={users.length}
+                rowCount={usersWithStatus.length}
                 numSelected={selected.length}
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
+                  { id: 'number', label: 'Название устройства' },
+                  { id: 'company', label: 'Тип устройства' },
+                  { id: 'role', label: 'Порода пчел' },
+                  { id: 'isVerified', label: 'Ручная проверка', align: 'center' },
+                  { id: 'status', label: 'Состояние улья' },
                   { id: '' },
                 ]}
               />
@@ -140,7 +201,6 @@ export default function UserPage() {
                       role={row.role}
                       status={row.status}
                       company={row.company}
-                      avatarUrl={row.avatarUrl}
                       isVerified={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
@@ -149,7 +209,7 @@ export default function UserPage() {
 
                 <TableEmptyRows
                   height={77}
-                  emptyRows={emptyRows(page, rowsPerPage, users.length)}
+                  emptyRows={emptyRows(page, rowsPerPage, usersWithStatus.length)}
                 />
 
                 {notFound && <TableNoData query={filterName} />}
@@ -161,7 +221,7 @@ export default function UserPage() {
         <TablePagination
           page={page}
           component="div"
-          count={users.length}
+          count={usersWithStatus.length}
           rowsPerPage={rowsPerPage}
           onPageChange={handleChangePage}
           rowsPerPageOptions={[5, 10, 25]}
