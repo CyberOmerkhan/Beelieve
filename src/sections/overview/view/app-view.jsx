@@ -1,11 +1,9 @@
-import { faker } from '@faker-js/faker';
+
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import AppNewsUpdate from '../app-news-update';
-import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
@@ -63,49 +61,308 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        <Grid xs={12} md={4} lg={6}>
           <AppWebsiteVisits
-            title="Website Visits"
-            subheader="(+43%) than last year"
-            chart={{
-              labels: [
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
-              ],
-              series: [
-                {
-                  name: 'Team A',
-                  type: 'column',
-                  fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                },
-                {
-                  name: 'Team B',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                },
-                {
-                  name: 'Team C',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-              ],
-            }}
-          />
+          title="Температура"
+          subheader="Подробная информация про температуру в улье"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [28, 19, 10, 24, 18, 12, 30, 34, 31, 27, 11, 25],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        </Grid>
+
+        <Grid xs={12} md={4} lg={6}>
+        <AppWebsiteVisits
+          title="Влажность"
+          subheader="Подробная информация про влажность в улье"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [24, 24, 10, 23, 16, 29, 40, 13, 11, 25, 17, 22],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        
         </Grid>
         
-        <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={4} lg={6}>
+        <AppWebsiteVisits
+          title="Вес"
+          subheader="Подробная информация про вес улья"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [13, 17, 38, 26, 17, 36, 33, 30, 25, 34, 18, 30],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        
+        </Grid>
+        <Grid xs={12} md={4} lg={6}>
+        <AppWebsiteVisits
+          title="Уровень углекислых газов"
+          subheader="Подробная информация про углекислый газ в улье"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [38, 31, 14, 36, 12, 34, 26, 13, 40, 38, 13, 15],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        
+        </Grid>
+        <Grid xs={12} md={4} lg={6}>
+        <AppWebsiteVisits
+          title="Уровень шума"
+          subheader="Подробная информация про уровень шума в улье"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [23, 40, 40, 28, 33, 34, 27, 34, 35, 33, 18, 32],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        
+        </Grid>
+        <Grid xs={12} md={4} lg={6}>
+        <AppWebsiteVisits
+          title="Пестициды"
+          subheader="Подробная информация про уровень пестицидов в улье"
+          chart={{
+            labels: [
+              '00:00',
+              '02:00',
+              '04:00',
+              '06:00',
+              '08:00',
+              '10:00',
+              '12:00',
+              '14:00',
+              '16:00',
+              '18:00',
+              '20:00',
+              '22:00',
+            ],
+            series: [
+              {
+                name: 'За сутки',
+                type: 'line',
+                fill: 'solid',
+                data: [16, 11, 26, 16, 31, 13, 15, 23, 17, 21, 30, 38],
+              },
+              {
+                name: 'За неделю',
+                type: 'area',
+                fill: 'gradient',
+                data: [],
+              },
+              {
+                name: 'За месяц',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+              {
+                name: 'За год',
+                type: 'line',
+                fill: 'solid',
+                data: [],
+              },
+            ],
+          }}
+        />
+        
+        
+        </Grid>
+        <Grid xs={12} md={6} lg={6}>
           <AppCurrentVisits
             title="Состояние улья"
             chart={{
@@ -117,95 +374,22 @@ export default function AppView() {
             }}
           />
         </Grid>
-        <Grid xs={12} md={6} lg={8}>
-          <AppWebsiteVisits
-            title="Website Visits"
-            subheader="(+43%) than last year"
-            chart={{
-              labels: [
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
-              ],
-              series: [
-                {
-                  name: 'Team A',
-                  type: 'column',
-                  fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                },
-                {
-                  name: 'Team B',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                },
-                {
-                  name: 'Team C',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-              ],
-            }}
-          />
-        </Grid>
-       
 
-        <Grid xs={12} md={6} lg={4}>
+        
+        
+        <Grid xs={12} md={6} lg={6}>
           <AppCurrentSubject
-            title="Current Subject"
+            title="Оценка состояния по секциям"
             chart={{
-              categories: ['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math'],
+              categories: ['Температура', 'Влажность', 'Уровень газов', 'Шум', 'Уровень пестицидов'],
               series: [
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+                { name: 'Оценка', data: [98, 87, 94, 89, 130] },
               ],
             }}
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
-          <AppNewsUpdate
-            title="News Update"
-            list={[...Array(5)].map((_, index) => ({
-              id: faker.string.uuid(),
-              title: faker.person.jobTitle(),
-              description: faker.commerce.productDescription(),
-              image: `/assets/images/covers/cover_${index + 1}.jpg`,
-              postedAt: faker.date.recent(),
-            }))}
-          />
         </Grid>
-
-        <Grid xs={12} md={6} lg={4}>
-          <AppOrderTimeline
-            title="Order Timeline"
-            list={[...Array(5)].map((_, index) => ({
-              id: faker.string.uuid(),
-              title: [
-                '1983, orders, $4220',
-                '12 Invoices have been paid',
-                'Order #37745 from September',
-                'New order placed #XF-2356',
-                'New order placed #XF-2346',
-              ][index],
-              type: `order${index + 1}`,
-              time: faker.date.past(),
-            }))}
-          />
-        </Grid>
-
-      </Grid>
     </Container>
   );
 }

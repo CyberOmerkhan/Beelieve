@@ -14,7 +14,7 @@ const navConfig = [
   },
   {
     title: 'Мои улья',
-    path: '/user',
+    path: '/hives',
     icon: icon('ic_hives'),
   },
   
@@ -38,11 +38,6 @@ const navConfig = [
     title: 'login',
     path: '/login',
     icon: icon('ic_lock'),
-  },
-  {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
   },
 ];
 

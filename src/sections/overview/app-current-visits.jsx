@@ -31,7 +31,10 @@ const StyledChart = styled(Chart)(({ theme }) => ({
 export default function AppCurrentVisits({ title, subheader, chart, ...other }) {
   const theme = useTheme();
 
-  const { colors, series, options } = chart;
+  const defaultColors = ['#13A30C', '#E87C16', '#E52C0B']; // Example colors: Red, Green, Blue
+  const labelColors = chart.colors || defaultColors;
+
+  const { series, options } = chart;
 
   const chartSeries = series.map((i) => i.value);
 
@@ -41,7 +44,7 @@ export default function AppCurrentVisits({ title, subheader, chart, ...other }) 
         enabled: true,
       },
     },
-    colors,
+    colors: labelColors, // Use the defined colors here
     labels: series.map((i) => i.label),
     stroke: {
       colors: [theme.palette.background.paper],
@@ -95,7 +98,16 @@ export default function AppCurrentVisits({ title, subheader, chart, ...other }) 
 }
 
 AppCurrentVisits.propTypes = {
-  chart: PropTypes.object,
+  chart: PropTypes.shape({
+    colors: PropTypes.arrayOf(PropTypes.string), // Include this if you are passing colors
+    series: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number.isRequired
+      })
+    ).isRequired,
+    options: PropTypes.object, // Include more specific validation if necessary
+  }),
   subheader: PropTypes.string,
   title: PropTypes.string,
 };

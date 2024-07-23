@@ -21,7 +21,7 @@ export default function BlogView() {
         <Typography variant="h4">Blog</Typography>
 
         <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New Post
+          Создать пост
         </Button>
       </Stack>
 
@@ -29,9 +29,9 @@ export default function BlogView() {
         <PostSearch posts={posts} />
         <PostSort
           options={[
-            { value: 'latest', label: 'Latest' },
-            { value: 'popular', label: 'Popular' },
-            { value: 'oldest', label: 'Oldest' },
+            { value: 'latest', label: 'Новые' },
+            { value: 'popular', label: 'Популярные' },
+            { value: 'oldest', label: 'Старые' },
           ]}
         />
       </Stack>

@@ -6,8 +6,6 @@ import CardHeader from '@mui/material/CardHeader';
 
 import Chart, { useChart } from 'src/components/chart';
 
-// ----------------------------------------------------------------------
-
 export default function AppWebsiteVisits({ title, subheader, chart, ...other }) {
   const { labels, colors, series, options } = chart;
 
@@ -21,9 +19,9 @@ export default function AppWebsiteVisits({ title, subheader, chart, ...other }) 
     fill: {
       type: series.map((i) => i.fill),
     },
-    labels,
     xaxis: {
-      type: 'datetime',
+      type: 'category',  // Change xaxis type to 'category'
+      categories: labels,  // Set the categories to the labels
     },
     tooltip: {
       shared: true,
@@ -31,7 +29,7 @@ export default function AppWebsiteVisits({ title, subheader, chart, ...other }) 
       y: {
         formatter: (value) => {
           if (typeof value !== 'undefined') {
-            return `${value.toFixed(0)} visits`;
+            return `${value.toFixed(0)} °C`;
           }
           return value;
         },
@@ -40,10 +38,13 @@ export default function AppWebsiteVisits({ title, subheader, chart, ...other }) 
     ...options,
   });
 
+  console.log('Chart Labels:', labels);
+  console.log('Chart Series:', series);
+  console.log('Chart Options:', chartOptions);
+
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
-
       <Box sx={{ p: 3, pb: 1 }}>
         <Chart
           dir="ltr"
