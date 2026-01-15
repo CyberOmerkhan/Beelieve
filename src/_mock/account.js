@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
 export const account = {
-  displayName: 'Aidarkhan Amirkhan',
+  displayName: 'Жайлы Мектеп',
   email: 'pchel@beelieve.org',
-  photoURL: '/assets/images/avatars/avatar_26.jpg',
+  photoURL: '/assets/images/avatars/new_photo.jpeg',
 };
